@@ -1,0 +1,52 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install X11 test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends libx11-6 libxtst6 libxi6 xvfb xauth
+      - name: Check Python and shell syntax
+        run: |
+          python -m compileall -q virtual_mouse tests run.py
+          bash -n iniciar.sh
+      - name: Run unit and X11 integration tests
+        run: |
+          xvfb-run --auto-servernum --server-num=99 --server-args="-screen 0 1024x768x24 -nolisten tcp" \
+            bash -c 'export VIRTUAL_MOUSE_TEST_DISPLAY="$DISPLAY"; export DISPLAY=:0; python -m unittest discover -s tests -v'
+      - name: Build source and wheel distributions
+        run: |
+          python -m pip install build
+          python -m build
+      - name: Install and verify the packaged command
+        run: python -m pip install --no-deps dist/*.whl
+      - name: Check entry point outside the source directory
+        working-directory: ${{ runner.temp }}
+        run: |
+          virtual-mouse --version
+          virtual-mouse --print-default-config

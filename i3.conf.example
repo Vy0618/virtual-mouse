@@ -1,0 +1,5 @@
+# Adicione ao ~/.config/i3/config e recarregue com $mod+Shift+c.
+# --release executa o comando ao soltar F8.
+# Troque /caminho/absoluto pelo caminho da pasta do projeto.
+# Replace /caminho/absoluto with your absolute project directory.
+bindsym --release $mod+F8 exec --no-startup-id /caminho/absoluto/virtual_mouse/iniciar.sh --toggle

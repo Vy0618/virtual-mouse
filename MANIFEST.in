@@ -1,0 +1,8 @@
+include README.md
+include CONTRIBUTING.md
+include PUBLISHING.md
+include config.example.json
+include i3.conf.example
+include iniciar.sh
+include run.py
+recursive-include tests *.py

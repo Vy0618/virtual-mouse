@@ -1,0 +1,11 @@
+{
+  "speed": 700,
+  "initial_speed": 160,
+  "acceleration": 1.4,
+  "precision_factor": 0.2,
+  "scroll_interval": 0.09,
+  "tick_hz": 60,
+  "toggle_hotkey": "Ctrl+Alt+m",
+  "quit_hotkey": "Ctrl+Alt+q",
+  "start_enabled": false
+}

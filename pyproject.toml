@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "virtual-mouse"
+description = "Control an X11 mouse with the numeric keypad on Linux."
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["version"]
+dependencies = []
+keywords = ["linux", "x11", "mouse", "numpad", "i3wm", "accessibility"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Desktop Environment",
+]
+
+[project.scripts]
+virtual-mouse = "virtual_mouse.app:main"
+
+[tool.setuptools]
+packages = ["virtual_mouse"]
+
+[tool.setuptools.dynamic]
+version = {attr = "virtual_mouse.__version__"}

@@ -1,0 +1,30 @@
+name: Bug / Erro
+description: Report a problem / Relatar um problema
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment / Ambiente
+      description: Linux distribution, desktop/window manager, X11 or Wayland, Python and application versions.
+      placeholder: Linux Mint 22.3, i3wm, X11, Python 3.12, virtual-mouse 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce / Como reproduzir
+      description: Include the command used to start the program and the keys you pressed.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior / Comportamento esperado e observado
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics / Diagnóstico
+      description: Output from ./iniciar.sh --check and any relevant terminal errors.
+      render: text

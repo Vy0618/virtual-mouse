@@ -1,0 +1,48 @@
+# Python and packaging
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+/build/
+/dist/
+*.whl
+
+# Virtual environments and tool caches
+.venv/
+venv/
+.tox/
+.nox/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Local configuration and credentials (keep the examples)
+/config.json
+/config.local.json
+/config.*.local.json
+.env
+.env.*
+!.env.example
+.aws/
+.codex/
+.agents/
+
+# Runtime files
+*.log
+*.pid
+*.sock
+core
+core.[0-9]*
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

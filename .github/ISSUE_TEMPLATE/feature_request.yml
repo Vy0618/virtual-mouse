@@ -1,0 +1,15 @@
+name: Feature / Funcionalidade
+description: Suggest an improvement / Sugerir uma melhoria
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case / Problema ou caso de uso
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested behavior / Comportamento sugerido
+    validations:
+      required: true
